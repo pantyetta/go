@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	var integer32 int = 2147483628
-	fmt.Println(integer32)
+	fmt.Println(math.MaxFloat32, math.MaxFloat64)
 }
