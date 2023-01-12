@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strconv"
 )
 
 func main() {
-	fmt.Println(math.MaxFloat32, math.MaxFloat64)
+	i, _ := strconv.Atoi("-42") // ascii to int
+	s := strconv.Itoa(-42)      // int to ascii
+	fmt.Println(i, s)
 }
