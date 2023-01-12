@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 )
 
 func main() {
-	i, _ := strconv.Atoi("-42") // ascii to int
-	s := strconv.Itoa(-42)      // int to ascii
-	fmt.Println(i, s)
+	number1, _ := strconv.Atoi(os.Args[1])
+	number2, _ := strconv.Atoi(os.Args[2])
+	fmt.Println("Sum:", number1+number2)
 }
