@@ -1,13 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/pantyetta/calculator"
+)
 
 func main() {
-	firstName := "John"
-	updateName(&firstName)
-	fmt.Println(firstName)
-}
-
-func updateName(name *string) {
-	*name = "David"
+	total := calculator.Sum(3, 5)
+	fmt.Println(total)
+	fmt.Println("Version: ", calculator.Version)
 }
