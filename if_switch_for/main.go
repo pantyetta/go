@@ -14,6 +14,13 @@ func highlow(high int, low int) {
 }
 
 func main() {
+	defer func() {
+		handler := recover()
+		if handler != nil {
+			fmt.Println("main(): recover", handler)
+		}
+	}()
+
 	highlow(2, 0)
 	fmt.Println("Program finished successfully!")
 }
