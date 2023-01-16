@@ -4,15 +4,17 @@ import "fmt"
 
 func main() {
 	val := 0
+
 	for {
 		fmt.Print("Enter number: ")
 		fmt.Scanf("%d", &val)
+
 		switch {
 		case val < 0:
-			panic("negative")
+			panic("You entered a negative number!")
 		case val == 0:
 			fmt.Println("0 is neither negative nor positive")
-		case val > 0:
+		default:
 			fmt.Println("You entered:", val)
 		}
 	}
