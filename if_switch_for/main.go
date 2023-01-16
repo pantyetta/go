@@ -2,21 +2,22 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
+	"io"
+	"os"
 )
 
 func main() {
-	var num int32
-	sec := time.Now().Unix()
-	rand.Seed(sec)
-
-	for {
-		fmt.Print("Writing inside the loop...")
-		if num = rand.Int31n(10); num == 5 {
-			fmt.Println("finish!")
-			break
-		}
-		fmt.Println(num)
+	newfile, error := os.Create("learnGo.txt")
+	if error != nil {
+		fmt.Println("Error: Could not create file.")
+		return
 	}
+	defer newfile.Close()
+
+	if _, error = io.WriteString(newfile, "Learning Go!"); error != nil {
+		fmt.Println("Error: Could not write to file.")
+		return
+	}
+
+	newfile.Sync()
 }
