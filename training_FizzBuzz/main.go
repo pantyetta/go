@@ -1,18 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
+
+func fizzbuzz(num int) string {
+	switch {
+	case num%15 == 0:
+		return "FizzBuzz"
+	case num%3 == 0:
+		return "Fizz"
+	case num%5 == 0:
+		return "Buzz"
+	}
+	return strconv.Itoa(num)
+}
 
 func main() {
-	for i := 1; i <= 100; i++ {
-		switch {
-		case i%15 == 0:
-			fmt.Println("FizzBuzz")
-		case i%3 == 0:
-			fmt.Println("Fizz")
-		case i%5 == 0:
-			fmt.Println("Buzz")
-		default:
-			fmt.Println(i)
-		}
+	for num := 1; num <= 100; num++ {
+		fmt.Println(fizzbuzz(num))
 	}
 }
