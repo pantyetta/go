@@ -4,15 +4,15 @@ import "fmt"
 
 func main() {
 	letters := []string{"A", "B", "C", "D", "E"}
-	remove := 2
+	fmt.Println("Before", letters)
 
-	if remove < len(letters) {
+	slice1 := letters[0:2]
 
-		fmt.Println("Before", letters, "Remove ", letters[remove])
+	slice2 := make([]string, 3)
+	copy(slice2, letters[1:4])
 
-		letters = append(letters[:remove], letters[remove+1:]...)
+	slice1[1] = "Z"
 
-		fmt.Println("After", letters)
-	}
-
+	fmt.Println("After", letters)
+	fmt.Println("Slice2", slice2)
 }
