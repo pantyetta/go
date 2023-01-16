@@ -1,11 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	studentsAge := make(map[string]int)
 	studentsAge["john"] = 32
 	studentsAge["bob"] = 31
-	delete(studentsAge, "john")
-	fmt.Println(studentsAge)
+	for name, age := range studentsAge {
+		fmt.Printf("%s\t%d\n", name, age)
+	}
 }
