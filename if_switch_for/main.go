@@ -1,17 +1,26 @@
 package main
 
-import "fmt"
-
-func givemeanumber() int {
-	return -1
-}
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
-	if num := givemeanumber(); num < 0 {
-		fmt.Println(num, "is negative")
-	} else if num < 10 {
-		fmt.Println(num, "has only one digit")
-	} else {
-		fmt.Println(num, "has multiple digits")
+	sec := time.Now().Unix()
+	rand.Seed(sec)
+	i := rand.Int31n(10)
+
+	switch i {
+	case 0:
+		fmt.Print("zero...")
+	case 1:
+		fmt.Print("one...")
+	case 2:
+		fmt.Print("two...")
+	default:
+		fmt.Print("no match...")
 	}
+
+	fmt.Println("ok")
 }
