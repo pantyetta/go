@@ -2,17 +2,29 @@ package main
 
 import "fmt"
 
-type Employee struct {
+type Person struct {
 	ID        int
 	FirstName string
 	LastName  string
 	Address   string
 }
 
+type Employee struct {
+	Person
+	ManagerID int
+}
+
+type Contractor struct {
+	Person
+	CompanyID int
+}
+
 func main() {
-	employee := Employee{LastName: "Doe", FirstName: "John"}
-	fmt.Println(employee)
-	employeeCopy := &employee
-	employeeCopy.FirstName = "David"
-	fmt.Println(employee)
+	employee := Employee{
+		Person: Person{
+			FirstName: "John",
+		},
+	}
+	employee.LastName = "Doe"
+	fmt.Println(employee.FirstName)
 }
