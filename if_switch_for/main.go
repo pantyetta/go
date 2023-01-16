@@ -7,10 +7,16 @@ import (
 )
 
 func main() {
-	var num int64
-	rand.Seed(time.Now().Unix())
-	for num != 5 {
-		num = rand.Int63n(15)
+	var num int32
+	sec := time.Now().Unix()
+	rand.Seed(sec)
+
+	for {
+		fmt.Print("Writing inside the loop...")
+		if num = rand.Int31n(10); num == 5 {
+			fmt.Println("finish!")
+			break
+		}
 		fmt.Println(num)
 	}
 }
