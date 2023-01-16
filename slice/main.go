@@ -3,9 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	var numbers []int
-	for i := 0; i < 10; i++ {
-		numbers = append(numbers, i)
-		fmt.Printf("%d\t%d\tcap=%d\t%v\n", i, len(numbers), cap(numbers), numbers)
+	letters := []string{"A", "B", "C", "D", "E"}
+	remove := 2
+
+	if remove < len(letters) {
+
+		fmt.Println("Before", letters, "Remove ", letters[remove])
+
+		letters = append(letters[:remove], letters[remove+1:]...)
+
+		fmt.Println("After", letters)
 	}
+
 }
