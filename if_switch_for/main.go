@@ -1,23 +1,19 @@
 package main
 
-import (
-	"fmt"
-	"io"
-	"os"
-)
+import "fmt"
+
+func highlow(high int, low int) {
+	if high < low {
+		fmt.Println("Panic!")
+		panic("highlow() low greater than high")
+	}
+	defer fmt.Println("Deferred: highlow(", high, ",", low, ")")
+	fmt.Println("Call: highlow(", high, ",", low, ")")
+
+	highlow(high, low+1)
+}
 
 func main() {
-	newfile, error := os.Create("learnGo.txt")
-	if error != nil {
-		fmt.Println("Error: Could not create file.")
-		return
-	}
-	defer newfile.Close()
-
-	if _, error = io.WriteString(newfile, "Learning Go!"); error != nil {
-		fmt.Println("Error: Could not write to file.")
-		return
-	}
-
-	newfile.Sync()
+	highlow(2, 0)
+	fmt.Println("Program finished successfully!")
 }
