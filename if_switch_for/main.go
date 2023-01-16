@@ -2,25 +2,25 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
-func main() {
-	sec := time.Now().Unix()
-	rand.Seed(sec)
-	i := rand.Int31n(10)
-
-	switch i {
-	case 0:
-		fmt.Print("zero...")
-	case 1:
-		fmt.Print("one...")
-	case 2:
-		fmt.Print("two...")
+func location(city string) (string, string) {
+	var region string
+	var continent string
+	switch city {
+	case "Delhi", "Hyderabad", "Mumbai", "Chennai", "Kochi":
+		region, continent = "India", "Asia"
+	case "Lafayette", "Louisville", "Boulder":
+		region, continent = "Colorado", "USA"
+	case "Irvine", "Los Angeles", "San Diego":
+		region, continent = "California", "USA"
 	default:
-		fmt.Print("no match...")
+		region, continent = "Unknown", "Unknown"
 	}
+	return region, continent
+}
 
-	fmt.Println("ok")
+func main() {
+	region, continent := location("Irvine")
+	fmt.Printf("John works in %s, %s\n", region, continent)
 }
