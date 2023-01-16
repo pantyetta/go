@@ -9,7 +9,7 @@ func findprimes(number int) bool {
 		}
 	}
 
-	if number > 0 {
+	if number > 1 {
 		return true
 	} else {
 		return false
