@@ -5,14 +5,9 @@ import (
 )
 
 func main() {
-	switch num := 15; {
-	case num < 50:
-		fmt.Printf("%d is less than 50\n", num)
-		fallthrough
-	case num > 100:
-		fmt.Printf("%d is greater than 100\n", num)
-		fallthrough
-	case num < 200:
-		fmt.Printf("%d is less than 200", num)
+	sum := 0
+	for i := 1; i <= 100; i++ {
+		sum += i
 	}
+	fmt.Println("sum of 1..100 is", sum)
 }
