@@ -18,9 +18,13 @@ func (s square) perimeter() int {
 	return s.size * 4
 }
 
+func (t *triangle) doubleSize() {
+	t.size *= 2
+}
+
 func main() {
 	t := triangle{3}
-	s := square{4}
-	fmt.Println("Perimeter (triangle):", t.perimeter())
-	fmt.Println("Perimeter (square):", s.perimeter())
+	t.doubleSize()
+	fmt.Println("Size:", t.size)
+	fmt.Println("Perimeter:", t.perimeter())
 }
