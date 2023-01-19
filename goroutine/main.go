@@ -6,12 +6,6 @@ import (
 	"time"
 )
 
-//---- x is something... ----
-// ch <- x // sends (or write) x through channel ch
-// x = <-ch // x receives (or reads) data sent to the channel ch
-// <-ch // receives data, but the result is discarded
-// -------------------------
-
 func checkAPI(api string, ch chan string) {
 	_, err := http.Get(api)
 	if err != nil {
@@ -34,7 +28,8 @@ func main() {
 		"https://graph.microsoft.com",
 	}
 
-	ch := make(chan string)
+	ch := make(chan string, 10)
+
 	for _, api := range apis {
 		go checkAPI(api, ch)
 	}
