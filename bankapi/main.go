@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/pantyetta/bankcore"
+
+	bank "github.com/pantyetta/bankcore"
 )
 
 func main() {
