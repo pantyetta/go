@@ -2,35 +2,43 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"time"
 )
 
-func fib(number float64, ch chan string) {
-	x, y := 1.0, 1.0
-	for i := 0; i < int(number); i++ {
-		x, y = y, x+y
+var quit = make(chan bool)
+
+func fib(data chan int) {
+	x, y := 1, 1
+
+	for {
+		select {
+		case data <- x:
+			x, y = y, x+y
+		case <-quit:
+			fmt.Println("Done calculating Fibonacci!")
+		}
 	}
-
-	r := rand.Intn(3)
-	time.Sleep(time.Duration(r) * time.Second)
-
-	ch <- fmt.Sprintf("Fib(%v): %v\n", number, x)
 }
 
 func main() {
 	start := time.Now()
-	size := 15
 
-	ch := make(chan string, size)
+	command := ""
+	data := make(chan int)
 
-	for i := 0; i < size; i++ {
-		go fib(float64(i), ch)
+	go fib(data)
+
+	for {
+		num := <-data
+		fmt.Println(num)
+		fmt.Scanf("%s", &command)
+		if command == "quit" {
+			quit <- true
+			break
+		}
 	}
 
-	for i := 0; i < size; i++ {
-		fmt.Println(<-ch)
-	}
+	time.Sleep(1 * time.Second)
 
 	elapsed := time.Since(start)
 	fmt.Printf("Done! It took %v seconds!\n", elapsed.Seconds())
