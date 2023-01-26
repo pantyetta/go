@@ -6,7 +6,7 @@ func TestAccount(t *testing.T) {
 	account := Account{
 		Customer: Customer{
 			Name:    "John",
-			address: "Los Angeles, California",
+			Address: "Los Angeles, California",
 			Phone:   "(213) 555 0147",
 		},
 		Number:  1001,
